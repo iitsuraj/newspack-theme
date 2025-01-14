@@ -12,6 +12,7 @@ const THEMES = [
 	'newspack-nelson',
 	'newspack-sacha',
 	'newspack-scott',
+	'shekhawatilive',
 ];
 
 /**

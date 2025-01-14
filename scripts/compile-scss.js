@@ -21,6 +21,10 @@ if ( ! fs.existsSync( './newspack-scott/styles' ) ) {
 	fs.mkdirSync( './newspack-scott/styles' );
 }
 
+if ( ! fs.existsSync( './shekhawatilive/styles' ) ) {
+	fs.mkdirSync( './shekhawatilive/styles' );
+}
+
 if ( ! fs.existsSync( './newspack-nelson/styles' ) ) {
 	fs.mkdirSync( './newspack-nelson/styles' );
 }
@@ -168,6 +172,16 @@ const SASS_STYLESHEETS = [
 	{
 		inFile: 'newspack-scott/tribe-events/tribe-events.scss',
 		outFile: 'newspack-scott/tribe-events/tribe-events.css',
+	},
+	// Shekhawatilive Child theme
+	{
+		inFile: 'shekhawatilive/sass/style.scss',
+		outFile: 'shekhawatilive/style.css',
+		withRTL: true,
+	},
+	{
+		inFile: 'shekhawatilive/sass/style-editor.scss',
+		outFile: 'shekhawatilive/style-editor.css',
 	},
 	// Newspack Nelson Child theme
 	{
