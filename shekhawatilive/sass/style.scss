@@ -111,7 +111,7 @@ a {
 	margin-bottom: 1rem;
 	.wrapper-nav {
 		min-height: 2rem;
-		padding: 0 0.5rem 0 0;
+		// padding: 0 0.5rem 0 0;
 		display: flex;
 		grid-gap: 0.5rem;
 		gap: 0.5rem;
@@ -124,7 +124,7 @@ a {
 			color: var(--newspack-theme-color-against-primary);
 			padding: 0 0.7rem;
 			font-size: var(--newspack-theme-font-size-sm);
-			line-height: 3;
+			line-height: 2.5;
 			text-transform: capitalize;
 			box-sizing: initial;
 		}
@@ -261,7 +261,7 @@ article {
 		// font-size: var(--newspack-theme-font-size-md);
 	}
 
-	.entry-content {
+	.entry-container .entry-content {
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
@@ -285,7 +285,6 @@ article {
 	.type-post {
 		.post-thumbnail {
 			overflow: hidden;
-			margin-bottom: 0;
 			img,
 			a img {
 				border-radius: 5px;

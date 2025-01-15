@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -10,30 +11,30 @@
 get_header();
 ?>
 
-	<section id="primary" class="content-area">
-		<?php do_action('before_archive_posts'); ?>
-		<main id="main" class="site-main">
-			<?php
+<section id="primary" class="content-area">
+	<?php do_action('before_archive_posts'); ?>
+	<main id="main" class="site-main">
+		<?php
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+		/* Start the Loop */
+		while (have_posts()) :
+			the_post();
 
-				// Template part for large featured images.
-				if ( in_array( newspack_featured_image_position(), array( 'large', 'behind', 'beside', 'above' ) ) ) :
-					get_template_part( 'template-parts/post/large-featured-image' );
-				else :
-					// Place smaller featured images inside of 'content' area.
-					if ( 'small' === newspack_featured_image_position() ) :
-						newspack_post_thumbnail();
-					endif;
-					get_template_part( 'template-parts/content/content', 'page' );
-					endif;
-					endwhile;
-					?>
-		</main><!-- #main -->
-		<?php get_sidebar(); ?>
-	</section><!-- #primary -->
+			// Template part for large featured images.
+			if (in_array(newspack_featured_image_position(), array('large', 'behind', 'beside', 'above'))) :
+				get_template_part('template-parts/post/large-featured-image');
+			else :
+				// Place smaller featured images inside of 'content' area.
+				if ('small' === newspack_featured_image_position()) :
+					newspack_post_thumbnail();
+				endif;
+				get_template_part('template-parts/content/content', 'page');
+			endif;
+		endwhile;
+		?>
+	</main><!-- #main -->
+	<?php get_sidebar(); ?>
+</section><!-- #primary -->
 
 <?php
 get_footer();

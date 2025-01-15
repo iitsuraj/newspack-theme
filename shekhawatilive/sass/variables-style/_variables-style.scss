@@ -19,5 +19,8 @@
 
 // Now overlay our style-specific variables, so we're only overriding specific variables.
 :root {
+	/* prettier-ignore */
 	--newspack-theme-font-heading: "Noto Sans Devanagari", "Helvetica", sans-serif;
+	--newspack-theme-font-line-height-body: 1.87;
+	--newspack-theme-font-line-height-heading: 1.4;
 }
