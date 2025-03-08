@@ -1,3 +1,55 @@
+# [2.6.0](https://github.com/Automattic/newspack-theme/compare/v2.5.0...v2.6.0) (2025-03-04)
+
+
+### Bug Fixes
+
+* **ads:** full width on all one-column ads ([#2440](https://github.com/Automattic/newspack-theme/issues/2440)) ([f37f898](https://github.com/Automattic/newspack-theme/commit/f37f898fcc30839ee62b5728273cd48f0d9c7753))
+* correct conflict in the theme package-lock.json file ([#2437](https://github.com/Automattic/newspack-theme/issues/2437)) ([bb031c7](https://github.com/Automattic/newspack-theme/commit/bb031c79dbd5863a86a95037cb78a912173b97ef))
+
+
+### Features
+
+* update default colours to match new brand colours ([#2436](https://github.com/Automattic/newspack-theme/issues/2436)) ([77834d1](https://github.com/Automattic/newspack-theme/commit/77834d19aaa1c9e7e8614b1b120863ad6ef0c076))
+
+# [2.6.0-alpha.1](https://github.com/Automattic/newspack-theme/compare/v2.5.0...v2.6.0-alpha.1) (2025-02-20)
+
+
+### Bug Fixes
+
+* **ads:** full width on all one-column ads ([#2440](https://github.com/Automattic/newspack-theme/issues/2440)) ([f37f898](https://github.com/Automattic/newspack-theme/commit/f37f898fcc30839ee62b5728273cd48f0d9c7753))
+* correct conflict in the theme package-lock.json file ([#2437](https://github.com/Automattic/newspack-theme/issues/2437)) ([bb031c7](https://github.com/Automattic/newspack-theme/commit/bb031c79dbd5863a86a95037cb78a912173b97ef))
+
+
+### Features
+
+* update default colours to match new brand colours ([#2436](https://github.com/Automattic/newspack-theme/issues/2436)) ([77834d1](https://github.com/Automattic/newspack-theme/commit/77834d19aaa1c9e7e8614b1b120863ad6ef0c076))
+
+# [2.5.0](https://github.com/Automattic/newspack-theme/compare/v2.4.3...v2.5.0) (2025-02-17)
+
+
+### Bug Fixes
+
+* make sure featured image behind images are centred ([#2430](https://github.com/Automattic/newspack-theme/issues/2430)) ([871838d](https://github.com/Automattic/newspack-theme/commit/871838d2e31a952aef94cddca8680f1d201df764))
+
+
+### Features
+
+* add corrections archive template ([#2431](https://github.com/Automattic/newspack-theme/issues/2431)) ([09897b0](https://github.com/Automattic/newspack-theme/commit/09897b099f026b02a700dfc65ecd312396556dc5))
+* add font-loading class ([#2418](https://github.com/Automattic/newspack-theme/issues/2418)) ([24888a3](https://github.com/Automattic/newspack-theme/commit/24888a352fe77ec8c2a59b14d8222d92c68457c5))
+
+# [2.5.0-alpha.1](https://github.com/Automattic/newspack-theme/compare/v2.4.3...v2.5.0-alpha.1) (2025-02-07)
+
+
+### Bug Fixes
+
+* make sure featured image behind images are centred ([#2430](https://github.com/Automattic/newspack-theme/issues/2430)) ([871838d](https://github.com/Automattic/newspack-theme/commit/871838d2e31a952aef94cddca8680f1d201df764))
+
+
+### Features
+
+* add corrections archive template ([#2431](https://github.com/Automattic/newspack-theme/issues/2431)) ([09897b0](https://github.com/Automattic/newspack-theme/commit/09897b099f026b02a700dfc65ecd312396556dc5))
+* add font-loading class ([#2418](https://github.com/Automattic/newspack-theme/issues/2418)) ([24888a3](https://github.com/Automattic/newspack-theme/commit/24888a352fe77ec8c2a59b14d8222d92c68457c5))
+
 ## [2.4.3](https://github.com/Automattic/newspack-theme/compare/v2.4.2...v2.4.3) (2025-02-03)
 
 
