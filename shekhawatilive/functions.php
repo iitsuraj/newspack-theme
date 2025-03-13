@@ -287,6 +287,16 @@ function newspack_custom_post_thumbnail_sizes_attr($attr)
 	if (is_home() || is_front_page()) {
 		return set_custom_image_attributes($attr, array(200, 400), 400);
 	}
+	if(is_page()) {
+		$current_category = get_queried_object();
+		if (!empty($current_category->post_name)) {
+			$current_category = get_category_by_slug($current_category->post_name);
+		}
+		if ($current_category && isset($current_category->term_id)) {
+			return set_custom_image_attributes($attr, array(200, 400), 400);
+		}
+		return $attr;
+	}
 	if (! is_singular()) {
 		$attr['sizes'] = '(max-width: 34.9rem) calc(100vw - 2rem), (max-width: 48.8rem) calc(50vw), (min-width: 48.9rem) 190px';
 		return set_custom_image_attributes($attr, array(200, 400), 400);
@@ -297,57 +307,76 @@ function newspack_custom_post_thumbnail_sizes_attr($attr)
 
 function add_last_modified_header()
 {
-	if (is_single() || is_page()) {
-		// For single posts and pages
-		$last_modified = get_the_modified_time('D, d M Y H:i:s') . ' GMT';
-		header('Last-Modified: ' . $last_modified);
+	// Ensure headers are not already sent
+    if (headers_sent()) {
+        return;
+    }
+	// Helper function to get the last modified time for a post
+    function get_last_modified_time_for_post($post_id = null)
+    {
+        return get_the_modified_time('D, d M Y H:i:s', $post_id) . ' GMT';
+    }
+	// Helper function to get the latest modified post
+	function get_latest_modified_post($args = [])
+	{
+		$default_args = [
+			'posts_per_page' => 1,
+			'orderby' => 'modified',
+			'order' => 'DESC',
+			'post_type' => 'post',
+			'post_status' => 'publish',
+		];
+		$args = wp_parse_args($args, $default_args);
+		$posts = get_posts($args);
+		return !empty($posts) ? $posts[0] : null;
+	}
+	if (is_single()) {
+		$last_modified = get_last_modified_time_for_post(get_the_ID());
+        header('Last-Modified: ' . $last_modified);
+        return;
+	} elseif (is_page()) {
+		$args = [];
+		$current_category = get_queried_object();
+		if (!empty($current_category->post_name)) {
+			$current_category = get_category_by_slug($current_category->post_name);
+		}
+		if ($current_category && isset($current_category->term_id)) {
+			$args['cat'] = $current_category->term_id;
+			$latest_post = get_latest_modified_post($args);
+			if ($latest_post) {
+				$last_modified = get_last_modified_time_for_post($latest_post->ID);
+				header('Last-Modified: ' . $last_modified);
+				return;
+			}
+		} else {
+			$last_modified = get_the_modified_time('D, d M Y H:i:s') . ' GMT';
+			header('Last-Modified: ' . $last_modified);
+			return;
+		}
 	} elseif (is_archive()) {
-		// For archive pages (category, author, date, tag)
-		$args = array(
-			'posts_per_page' => 1,
-			'orderby' => 'date',
-			'order' => 'DESC',
-			'post_type' => 'post',
-			'post_status' => 'publish'
-		);
+		$args = [];
 
-		// Check if it is a category archive
-		if (is_category()) {
-			$args['cat'] = get_queried_object_id();
-		}
-		// Check if it is an author archive
-		elseif (is_author()) {
-			$args['author'] = get_queried_object_id();
-		}
-		// Check if it is a tag archive
-		elseif (is_tag()) {
-			$args['tag_id'] = get_queried_object_id();
-		}
-		// Retrieve the latest modified post based on the current archive
-		$last_post = get_posts($args);
+        if (is_category()) {
+            $args['cat'] = get_queried_object_id();
+        } elseif (is_author()) {
+            $args['author'] = get_queried_object_id();
+        } elseif (is_tag()) {
+            $args['tag_id'] = get_queried_object_id();
+        }
 
-		if (!empty($last_post)) {
-			$last_modified = get_the_modified_time('D, d M Y H:i:s', $last_post[0]->ID) . ' GMT';
-			header('Last-Modified: ' . $last_modified);
-		}
+        $latest_post = get_latest_modified_post($args);
+        if ($latest_post) {
+            $last_modified = get_last_modified_time_for_post($latest_post->ID);
+            header('Last-Modified: ' . $last_modified);
+        }
+        return;
 	} elseif (is_home() || is_front_page()) {
-		// For the homepage
-		$args = array(
-			'posts_per_page' => 1,
-			'orderby' => 'date',
-			'order' => 'DESC',
-			'post_type' => 'post',
-			'post_status' => 'publish'
-			// 'numberposts' => 200
-		);
-
-		// Retrieve the latest modified post for the homepage
-		$last_post = get_posts($args);
-
-		if (!empty($last_post)) {
-			$last_modified = get_the_modified_time('D, d M Y H:i:s', $last_post[0]->ID) . ' GMT';
-			header('Last-Modified: ' . $last_modified);
-		}
+		$latest_post = get_latest_modified_post();
+        if ($latest_post) {
+            $last_modified = get_last_modified_time_for_post($latest_post->ID);
+            header('Last-Modified: ' . $last_modified);
+        }
+        return;
 	}
 }
 // add_action('wp', 'add_last_modified_header');
