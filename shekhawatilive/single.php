@@ -17,9 +17,10 @@ get_header();
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-
+				// Check if the post belongs to the "video" category
+				$hide_thumbnail = has_category('video');
 				// Template part for large featured images.
-				if ( in_array( newspack_featured_image_position(), array( 'large', 'behind', 'beside', 'above' ) ) ) :
+				if (! $hide_thumbnail && in_array( newspack_featured_image_position(), array( 'large', 'behind', 'beside', 'above' ) ) ) :
 					get_template_part( 'template-parts/post/large-featured-image' );
 				else :
 				?>
@@ -35,7 +36,7 @@ get_header();
 					}
 
 					// Place smaller featured images inside of 'content' area.
-					if ( 'small' === newspack_featured_image_position() ) :
+					if (! $hide_thumbnail && 'small' === newspack_featured_image_position() ) :
 						newspack_post_thumbnail();
 					endif;
 
