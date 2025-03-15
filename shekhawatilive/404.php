@@ -29,7 +29,6 @@ get_header();
 			</div><!-- .error-404 -->
 
 		</main><!-- #main -->
-		<?php get_sidebar(); ?>
 	</section><!-- #primary -->
 
 <?php
