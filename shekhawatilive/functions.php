@@ -44,6 +44,12 @@ if (! function_exists('newspack_shekhawatilive_setup')) :
 			'index.php?pagename=$matches[1]',
 			'top'
 		);
+		add_filter('perfmatters_delay_js_timeout', function ($timeout) {
+			return '5';
+		});
+		add_filter('jetpack_top_posts_days', 'jetpackme_top_posts_timeframe');
+		add_filter('jetpack_relatedposts_filter_date_range', 'mtz_related_posts_limit');
+		add_filter('onesignal_send_notification', 'prevent_onesignal_replacing_notifications');
 
 		if (function_exists('newspack_post_thumbnail_sizes_attr') && function_exists('newspack_custom_post_thumbnail_sizes_attr')) {
 			remove_filter('wp_get_attachment_image_attributes', 'newspack_post_thumbnail_sizes_attr');
@@ -57,7 +63,27 @@ if (! function_exists('newspack_shekhawatilive_setup')) :
 	}
 endif;
 add_action('after_setup_theme', 'newspack_shekhawatilive_setup', 12);
-
+function jetpackme_top_posts_timeframe()
+{
+	return '3';
+}
+function mtz_related_posts_limit($date_range)
+{
+	return array(
+		'from' => strtotime('-3 days'),
+		'to'   => time(),
+	);
+}
+function prevent_onesignal_replacing_notifications($fields)
+{
+	// Add a unique tag to prevent collapsing/overwriting
+	$unique_id = uniqid('notif_', true);
+	$fields['web_push_topic'] = $unique_id;
+	$fields['chrome_web_notification_tag'] = $unique_id;
+	// Optional: disable renotify so users don’t hear the sound again
+	$fields['chrome_web_notification_renotify'] = true;
+	return $fields;
+}
 /**
  * Display custom color CSS in customizer and on frontend.
  */
@@ -145,7 +171,6 @@ function newspack_add_sidebar($classes)
 	}
 
 	$classes[] = 'has-sidebar';
-	// error_log(json_encode($classes));
 	return $classes;
 }
 add_filter('body_class', 'newspack_add_sidebar', 999);
@@ -290,22 +315,15 @@ function newspack_custom_post_thumbnail_sizes_attr($attr)
 	if ($attr["class"] === "custom-logo") {
 		return $attr;
 	}
-	//	if (is_admin()) {
-	//		return $attr;
-	//	}
+	if (is_admin()) {
+		return $attr;
+	}
 	if (is_home() || is_front_page()) {
 		return set_custom_image_attributes($attr, array(200, 400), 400);
 	}
-	if (is_page()) {
-		$current_category = get_queried_object();
-		if (!empty($current_category->post_name)) {
-			$current_category = get_category_by_slug($current_category->post_name);
-		}
-		if ($current_category && isset($current_category->term_id)) {
-			return set_custom_image_attributes($attr, array(200, 400), 400);
-		}
-		return $attr;
-	}
+	// if (is_page() || is_archive()) {
+	// 	return set_custom_image_attributes($attr, array(200, 400), 400);
+	// }
 	if (! is_singular()) {
 		$attr['sizes'] = '(max-width: 34.9rem) calc(100vw - 2rem), (max-width: 48.8rem) calc(50vw), (min-width: 48.9rem) 190px';
 		return set_custom_image_attributes($attr, array(200, 400), 400);

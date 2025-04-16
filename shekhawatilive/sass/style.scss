@@ -6,7 +6,27 @@
 
 /* Child theme-specific overrides */
 /* Blocks */
-
+a.imprint {
+	opacity: 0;
+}
+.is-style-aarti {
+	font-size: 23px;
+	font-weight: 600;
+	line-height: 1.83;
+	text-align: center;
+	margin-bottom: 0;
+	margin-top: 25px;
+}
+.cat-aarti .wp-block-separator {
+	border: none;
+	background-image: url(https://cdn.shekhawatilive.com/wp-content/uploads/2025/04/mantra-seperator.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100% 100%;
+	width: 50%;
+	margin-top: 25px;
+	height: 15px;
+}
 //! Newspack
 .wpnbha .cat-links::before {
 	display: none;
@@ -131,7 +151,7 @@ a {
 			position: relative;
 			padding: 0.05rem;
 			background: var(--newspack-theme-color-primary);
-
+			white-space: nowrap;
 			&::after {
 				content: "";
 				width: 0;
@@ -385,9 +405,9 @@ article {
 	}
 
 	#secondary {
-		display: none;
-		padding-top: 0;
-		margin-top: 0;
+		display: block;
+		padding-top: "5px";
+		margin-top: "5px";
 		@include utilities.media(desktop) {
 			display: block;
 			width: calc(25% - #{0.5 * structure.$size__spacing-unit});
