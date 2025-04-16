@@ -41,6 +41,8 @@ jobs:
       - store_artifacts:
           path: release/newspack-scott.zip
       - store_artifacts:
+          path: release/shekhawatilive.zip
+      - store_artifacts:
           path: release/newspack-theme.zip
 
   # Linting

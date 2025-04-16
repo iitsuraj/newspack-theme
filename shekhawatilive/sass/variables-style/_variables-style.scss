@@ -1,0 +1,10 @@
+// Import the default variable values.
+@use "../../../newspack-theme/sass/variables-site/colors";
+@use "../../../newspack-theme/sass/variables-site/fonts";
+
+// Now overlay our style-specific variables, so we're only overriding specific variables.
+:root {
+	/* prettier-ignore */
+	--newspack-theme-font-heading: sans-serif;
+	--newspack-theme-font-body: serif;
+}
