@@ -1,3 +1,95 @@
+# [2.9.0](https://github.com/Automattic/newspack-theme/compare/v2.8.0...v2.9.0) (2025-04-14)
+
+
+### Bug Fixes
+
+* change content_width function name ([#2470](https://github.com/Automattic/newspack-theme/issues/2470)) ([9592756](https://github.com/Automattic/newspack-theme/commit/9592756c12271b0b34b6a4310a10cfc96a68c8ec))
+* correct appearance of membership discount in Woo ([#2465](https://github.com/Automattic/newspack-theme/issues/2465)) ([bc3a1f6](https://github.com/Automattic/newspack-theme/commit/bc3a1f64919ac5a5cdad3e7ac4de68c14c69cd42))
+* **notice:** fetchpriority notice for images ([#2472](https://github.com/Automattic/newspack-theme/issues/2472)) ([dfc820b](https://github.com/Automattic/newspack-theme/commit/dfc820b0059f1103ed80be19a4be719588f5576a))
+* remove deprecated geo-location support ([#2468](https://github.com/Automattic/newspack-theme/issues/2468)) ([8c8eca8](https://github.com/Automattic/newspack-theme/commit/8c8eca83d3b1a98331145d4012da47811a1f30bf))
+
+
+### Features
+
+* frontend display of bylines ([#2469](https://github.com/Automattic/newspack-theme/issues/2469)) ([33137ff](https://github.com/Automattic/newspack-theme/commit/33137ffb1256b6a2f7842c54b4b443fb7a6023cd))
+
+# [2.9.0-alpha.1](https://github.com/Automattic/newspack-theme/compare/v2.8.0...v2.9.0-alpha.1) (2025-04-04)
+
+
+### Bug Fixes
+
+* change content_width function name ([#2470](https://github.com/Automattic/newspack-theme/issues/2470)) ([9592756](https://github.com/Automattic/newspack-theme/commit/9592756c12271b0b34b6a4310a10cfc96a68c8ec))
+* correct appearance of membership discount in Woo ([#2465](https://github.com/Automattic/newspack-theme/issues/2465)) ([bc3a1f6](https://github.com/Automattic/newspack-theme/commit/bc3a1f64919ac5a5cdad3e7ac4de68c14c69cd42))
+* **notice:** fetchpriority notice for images ([#2472](https://github.com/Automattic/newspack-theme/issues/2472)) ([dfc820b](https://github.com/Automattic/newspack-theme/commit/dfc820b0059f1103ed80be19a4be719588f5576a))
+* remove deprecated geo-location support ([#2468](https://github.com/Automattic/newspack-theme/issues/2468)) ([8c8eca8](https://github.com/Automattic/newspack-theme/commit/8c8eca83d3b1a98331145d4012da47811a1f30bf))
+
+
+### Features
+
+* frontend display of bylines ([#2469](https://github.com/Automattic/newspack-theme/issues/2469)) ([33137ff](https://github.com/Automattic/newspack-theme/commit/33137ffb1256b6a2f7842c54b4b443fb7a6023cd))
+
+# [2.8.0](https://github.com/Automattic/newspack-theme/compare/v2.7.0...v2.8.0) (2025-03-31)
+
+
+### Bug Fixes
+
+* change content_width function name ([#2470](https://github.com/Automattic/newspack-theme/issues/2470)) ([8e5f229](https://github.com/Automattic/newspack-theme/commit/8e5f2293f7dc52c476f81bce11d9db50964dbcef))
+* **post-dates:** use JS for "time ago" dates ([#2457](https://github.com/Automattic/newspack-theme/issues/2457)) ([891d3d9](https://github.com/Automattic/newspack-theme/commit/891d3d98881b53bf58dab34ffb725a048626bc75))
+* update json files with MD5 hash versions ([#2458](https://github.com/Automattic/newspack-theme/issues/2458)) ([fc0ec4a](https://github.com/Automattic/newspack-theme/commit/fc0ec4aeda6fba3a0c8f63d149c9b3fb863bfbc8))
+
+
+### Features
+
+* add small image size for smaller featured images ([#2456](https://github.com/Automattic/newspack-theme/issues/2456)) ([f0d10de](https://github.com/Automattic/newspack-theme/commit/f0d10de85f84040dd997762febccd765cac39f62))
+* increase content_width for certain templates ([#2454](https://github.com/Automattic/newspack-theme/issues/2454)) ([5053e7a](https://github.com/Automattic/newspack-theme/commit/5053e7a0ec6537c1b77013f3d38f714cd2fc2e35))
+
+# [2.8.0-alpha.2](https://github.com/Automattic/newspack-theme/compare/v2.8.0-alpha.1...v2.8.0-alpha.2) (2025-03-28)
+
+
+### Bug Fixes
+
+* change content_width function name ([#2470](https://github.com/Automattic/newspack-theme/issues/2470)) ([8e5f229](https://github.com/Automattic/newspack-theme/commit/8e5f2293f7dc52c476f81bce11d9db50964dbcef))
+
+# [2.8.0-alpha.1](https://github.com/Automattic/newspack-theme/compare/v2.7.0...v2.8.0-alpha.1) (2025-03-20)
+
+
+### Bug Fixes
+
+* **post-dates:** use JS for "time ago" dates ([#2457](https://github.com/Automattic/newspack-theme/issues/2457)) ([891d3d9](https://github.com/Automattic/newspack-theme/commit/891d3d98881b53bf58dab34ffb725a048626bc75))
+* update json files with MD5 hash versions ([#2458](https://github.com/Automattic/newspack-theme/issues/2458)) ([fc0ec4a](https://github.com/Automattic/newspack-theme/commit/fc0ec4aeda6fba3a0c8f63d149c9b3fb863bfbc8))
+
+
+### Features
+
+* add small image size for smaller featured images ([#2456](https://github.com/Automattic/newspack-theme/issues/2456)) ([f0d10de](https://github.com/Automattic/newspack-theme/commit/f0d10de85f84040dd997762febccd765cac39f62))
+* increase content_width for certain templates ([#2454](https://github.com/Automattic/newspack-theme/issues/2454)) ([5053e7a](https://github.com/Automattic/newspack-theme/commit/5053e7a0ec6537c1b77013f3d38f714cd2fc2e35))
+
+# [2.7.0](https://github.com/Automattic/newspack-theme/compare/v2.6.0...v2.7.0) (2025-03-18)
+
+
+### Bug Fixes
+
+* hide updated date from non-post posttypes ([#2453](https://github.com/Automattic/newspack-theme/issues/2453)) ([3f05aa8](https://github.com/Automattic/newspack-theme/commit/3f05aa8106fcd5b99b88cd2034fcc97035cc4a8b))
+
+
+### Features
+
+* Style Corrections archive templates ([#2438](https://github.com/Automattic/newspack-theme/issues/2438)) ([78ff38c](https://github.com/Automattic/newspack-theme/commit/78ff38cdc1ad054e1a82f402a61884e7495aa194))
+* update login screen when no custom logo ([#2442](https://github.com/Automattic/newspack-theme/issues/2442)) ([fd6b22b](https://github.com/Automattic/newspack-theme/commit/fd6b22b5651287b22260cc6d89c30fd87f28d38c))
+
+# [2.7.0-alpha.1](https://github.com/Automattic/newspack-theme/compare/v2.6.0...v2.7.0-alpha.1) (2025-03-06)
+
+
+### Bug Fixes
+
+* hide updated date from non-post posttypes ([#2453](https://github.com/Automattic/newspack-theme/issues/2453)) ([3f05aa8](https://github.com/Automattic/newspack-theme/commit/3f05aa8106fcd5b99b88cd2034fcc97035cc4a8b))
+
+
+### Features
+
+* Style Corrections archive templates ([#2438](https://github.com/Automattic/newspack-theme/issues/2438)) ([78ff38c](https://github.com/Automattic/newspack-theme/commit/78ff38cdc1ad054e1a82f402a61884e7495aa194))
+* update login screen when no custom logo ([#2442](https://github.com/Automattic/newspack-theme/issues/2442)) ([fd6b22b](https://github.com/Automattic/newspack-theme/commit/fd6b22b5651287b22260cc6d89c30fd87f28d38c))
+
 # [2.6.0](https://github.com/Automattic/newspack-theme/compare/v2.5.0...v2.6.0) (2025-03-04)
 
 
