@@ -46,7 +46,7 @@ if (! function_exists('newspack_shekhawatilive_setup')) :
 			'index.php?pagename=$matches[1]',
 			'top'
 		);
-		add_filter('onesignal_send_notification', 'prevent_onesignal_replacing_notifications');
+		add_filter('onesignal_send_notification', 'onesignal_send_notification_filter', 10);
 		add_filter('newspack_reader_activation_should_render_auth', '__return_false', 5);
 		// add_action('wp', 'add_last_modified_header');
 		add_filter('wp_editor_set_quality', function ($quality) {
@@ -55,37 +55,6 @@ if (! function_exists('newspack_shekhawatilive_setup')) :
 	}
 endif;
 add_action('after_setup_theme', 'newspack_shekhawatilive_setup', 12);
-function redirect_old_html_urls_to_new_structure()
-{
-	// Check if the URL matches /%postname%.html/
-	if (preg_match('#^/([^/]+)\.html/?$#', $_SERVER['REQUEST_URI'], $matches)) {
-		$post_slug = $matches[1];
-
-		// Try to get the post by slug
-		$post = get_page_by_path($post_slug, OBJECT, ['post', 'page']); // Works for posts AND pages
-
-		if ($post) {
-			$new_url = get_permalink($post->ID); // Automatically uses the current permalink structure
-
-			// Ensure the new URL is different (avoid infinite redirects)
-			if ($new_url && $new_url !== home_url($_SERVER['REQUEST_URI'])) {
-				wp_redirect($new_url, 301);
-				exit;
-			}
-		}
-	}
-}
-
-function prevent_onesignal_replacing_notifications($fields)
-{
-	// Add a unique tag to prevent collapsing/overwriting
-	$unique_id = uniqid('notif_', true);
-	$fields['web_push_topic'] = $unique_id;
-	$fields['chrome_web_notification_tag'] = $unique_id;
-	// Optional: disable renotify so users don’t hear the sound again
-	$fields['chrome_web_notification_renotify'] = true;
-	return $fields;
-}
 /**
  * Display custom color CSS in customizer and on frontend.
  */
@@ -262,3 +231,52 @@ function add_sub_category_nav()
 add_action('after_header', function() {
     echo add_sub_category_nav();
 }, 1);
+function redirect_old_html_urls_to_new_structure()
+{
+	// Check if the URL matches /%postname%.html/
+	if (preg_match('#^/([^/]+)\.html/?$#', $_SERVER['REQUEST_URI'], $matches)) {
+		$post_slug = $matches[1];
+
+		// Try to get the post by slug
+		$post = get_page_by_path($post_slug, OBJECT, ['post', 'page']); // Works for posts AND pages
+
+		if ($post) {
+			$new_url = get_permalink($post->ID); // Automatically uses the current permalink structure
+
+			// Ensure the new URL is different (avoid infinite redirects)
+			if ($new_url && $new_url !== home_url($_SERVER['REQUEST_URI'])) {
+				wp_redirect($new_url, 301);
+				exit;
+			}
+		}
+	}
+}
+
+function onesignal_send_notification_filter($fields)
+{
+	$post_url = get_permalink($post_id) . '?share=jetpack-whatsapp&nb=1';
+    $post_title = get_the_title($post_id);
+	$excerpt = get_the_excerpt($post_id);
+	$short_excerpt = mb_substr(strip_tags($excerpt), 0, 150) . '...';
+	// Add a unique tag to prevent collapsing/overwriting
+	$fields['headings'] = array(
+        'en' => $post_title
+    );
+
+    $fields['contents'] = array(
+        'en' => $short_excerpt
+    );
+	$fields['web_push_topic'] = $post_id;
+	$fields['chrome_web_notification_tag'] = $post_id;
+	// Optional: disable renotify so users don’t hear the sound again
+	$fields['chrome_web_notification_renotify'] = true;
+	   $fields['buttons'] = array(
+        array(
+            "id" => "share-button",
+            "text" => "Share",
+            "icon" => "https://cdn.shekhawatilive.com/wp-content/uploads/2025/05/whatsapp.png",  // Your custom icon URL
+            "url" => $post_url
+        )
+    );
+	return $fields;
+}
