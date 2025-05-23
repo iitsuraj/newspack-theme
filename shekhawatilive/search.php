@@ -14,12 +14,8 @@ get_header();
 
 		<header class="page-header">
 			<h1 class="page-title">
-				<span>
-					<?php esc_html_e( 'Search results', 'newspack' ); ?>
-				</span>
-
+				<?php esc_html_e( 'Search results', 'newspack' ); ?>
 			</h1>
-			<?php get_search_form(); ?>
 		</header><!-- .page-header -->
 
 		<main id="main" class="site-main">
