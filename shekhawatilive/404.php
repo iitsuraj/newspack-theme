@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -11,26 +10,22 @@ header('Cache-Control: no-store, no-cache, must-revalidate');
 get_header();
 ?>
 
-<section id="primary" class="content-area">
-	<main id="main" class="site-main">
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-		<div class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title">
-					<span>
-						<?php _e('Oops! That page can&rsquo;t be found.', 'newspack'); ?>
-					</span>
-				</h1>
-			</header><!-- .page-header -->
+			<div class="error-404 not-found">
+				<header class="page-header">
+					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'newspack' ); ?></h1>
+				</header><!-- .page-header -->
 
-			<div class="page-content">
-				<p><?php _e('It looks like nothing was found at this location. Maybe try a search?', 'newspack'); ?></p>
-				<?php get_search_form(); ?>
-			</div><!-- .page-content -->
-		</div><!-- .error-404 -->
+				<div class="page-content">
+					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'newspack' ); ?></p>
+					<?php get_search_form(); ?>
+				</div><!-- .page-content -->
+			</div><!-- .error-404 -->
 
-	</main><!-- #main -->
-</section><!-- #primary -->
+		</main><!-- #main -->
+	</section><!-- #primary -->
 
 <?php
 get_footer();
